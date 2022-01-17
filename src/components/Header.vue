@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="d-flex align-items-center">
       <img src="../assets/logo-spotify-icon-4096.png" alt="spotify logo">
   </header>
 </template>
@@ -15,7 +15,7 @@ export default {
 @import "../assets/scss/partials/_commons.scss";
 
 header {
-    height: 60px;
+    height: $header-height;
     background-color: $gray;
     text-align: start;
 }

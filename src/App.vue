@@ -20,11 +20,15 @@ export default {
 
 <style lang="scss">
 @import "~bootstrap/scss/bootstrap";
+@import "./src/assets/scss/partials/_commons.scss";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: white;
   height: 100vh;
+}
+
+body {
+  background-color: $dark-blue;
 }
 </style>
