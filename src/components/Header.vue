@@ -6,19 +6,21 @@
 
 <script>
 export default {
-    name: "Header"
-}
+  name: 'Header',
+};
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/partials/_commons.scss";
+@import "~bootstrap/scss/bootstrap";
+@import "../assets/scss/partials/_commons.scss";
+
 header {
-    height: 100px;
+    height: 60px;
     background-color: $gray;
+    text-align: start;
 }
 
 img {
     width: 50px;
-    text-align: start;
 }
 </style>
