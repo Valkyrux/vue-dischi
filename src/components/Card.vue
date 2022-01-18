@@ -1,10 +1,10 @@
 <template>
     <li class="col mb-3">
-        <div class="p-3 card-content">
+        <div class="p-4 card-content">
             <img :src="imgUrl" :alt="firstTitle">
-            <h2 class="fs-3 mt-3">{{firstTitle}}</h2>
-            <h3 class="fs-5">{{secondTitle}}</h3>
-            <h4 class="fs-5">{{thirdTitle}}</h4>
+            <h2 class="fs-4 mt-3">{{firstTitle}}</h2>
+            <h3 class="fs-6">{{secondTitle}}</h3>
+            <h4 class="fs-6">{{thirdTitle}}</h4>
         </div>
     </li>
 </template>

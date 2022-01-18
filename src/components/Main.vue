@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-4">
+    <div class="container d-flex align-items-center justify-content-center overflow-auto">
         <ul class="row row-cols-5 p-0">
             <Card
             v-for="(album, index) in albumList"
@@ -41,9 +41,10 @@ export default {
 </script>
 
 <style lang="scss">
- @import "../assets/scss/partials/_commons.scss";
+@import "../assets/scss/partials/_commons.scss";
+
 div.container {
-    height: calc(100% - $header-height);
+  height: calc(100% - $header-height);
 }
 
 ul {
