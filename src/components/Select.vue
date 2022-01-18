@@ -1,5 +1,7 @@
 <template>
-    <select name="genreSelect" id="#genre-select">
+    <select name="genreSelect" id="#genre-select"
+    @change='$emit("userSelection", value)' v-model="value">
+        <option value="All">All</option>
         <option
             v-for="(option,index) in optionsForSelect"
             :value="option"
@@ -12,6 +14,11 @@
 <script>
 export default {
   name: 'Select',
+  data() {
+    return {
+      value: 'All',
+    };
+  },
   props: {
     optionsForSelect: {
       type: Array,
