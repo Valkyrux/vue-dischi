@@ -34,6 +34,9 @@ export default {
 select {
   background-color: $gray;
   color: white;
+  &:hover {
+      background-color: $dark-blue;
+  }
 }
 
 </style>

@@ -1,5 +1,6 @@
 <template>
-    <div class="container overflow-auto">
+  <div class="content-box">
+    <div class="container overflow-auto" v-if="albumList">
       <div class="text-end w-100 p-4">
         <Select :optionsForSelect="genreList" v-if="genreList"
         @userSelection="choosedGenre = $event"
@@ -19,6 +20,10 @@
           />
         </ul>
     </div>
+    <h1 v-else class="d-flex justify-content-center align-items-center h-100">
+      <font-awesome-icon class="me-3" icon="sync-alt" spin/> Waiting for AXIOS call
+    </h1>
+  </div>
 </template>
 
 <script>
@@ -85,7 +90,7 @@ export default {
 <style lang="scss">
 @import "../assets/scss/partials/_commons.scss";
 
-div.container {
+.content-box {
   height: calc(100% - $header-height);
 }
 
