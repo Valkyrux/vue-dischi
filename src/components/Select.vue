@@ -28,6 +28,12 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import "../assets/scss/partials/_commons.scss";
+
+select {
+  background-color: $gray;
+  color: white;
+}
 
 </style>

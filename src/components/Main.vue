@@ -1,21 +1,22 @@
 <template>
-    <div class="container d-flex align-items-center
-    justify-content-center overflow-auto flex-column"
-    >
+    <div class="container overflow-auto">
+      <div class="text-end w-100 p-4">
         <Select :optionsForSelect="genreList" v-if="genreList"
-        @userSelection="choosedGenre = $event" />
+        @userSelection="choosedGenre = $event"
+        class="me-2"/>
         <Select :optionsForSelect="artistList" v-if="artistList"
         @userSelection="choosedArtist = $event" />
-        <ul class="row row-cols-5 p-0">
-            <Card
-            v-for="(album, index)
-            in doubleFilter(albumList, 'genre', 'author', choosedGenre, choosedArtist)"
-            :key="index"
-            :imgUrl="album.poster"
-            :firstTitle="album.title"
-            :secondTitle="album.author"
-            :thirdTitle="album.year"
-            />
+      </div>
+      <ul class="row row-cols-5 p-0 w-100">
+        <Card
+          v-for="(album, index)
+          in doubleFilteredList"
+          :key="index"
+          :imgUrl="album.poster"
+          :firstTitle="album.title"
+          :secondTitle="album.author"
+          :thirdTitle="album.year"
+          />
         </ul>
     </div>
 </template>
@@ -41,6 +42,7 @@ export default {
     };
   },
   methods: {
+    // funzione che raccoglie tutti i possibili valori di una chiave in una lista di oggetti unici
     getKeyValueList(objectList, key) {
       const keyValueList = [];
       objectList.forEach((element) => {
@@ -50,16 +52,6 @@ export default {
       });
       return keyValueList;
     },
-    filterForKey(objectList, key, keyValue) {
-      if (keyValue !== 'All') {
-        return objectList.filter((element) => element[key] === keyValue);
-      }
-      return objectList;
-    },
-    doubleFilter(objectList, keyOne, keyTwo, keyValueOne, keyValueTwo) {
-      const firstFilter = this.filterForKey(objectList, keyOne, keyValueOne);
-      return this.filterForKey(firstFilter, keyTwo, keyValueTwo);
-    },
     getValues(APIUrl) {
       axios.get(APIUrl)
         .then((response) => {
@@ -68,6 +60,20 @@ export default {
           this.artistList = this.getKeyValueList(this.albumList, 'author');
         })
         .catch((error) => { console.log(error); });
+    },
+    // funzione che applica un filtro dato un array di oggetti nome chiave e valore
+    filterForKey(objectList, key, keyValue) {
+      if (keyValue !== 'All') {
+        return objectList.filter((element) => element[key] === keyValue);
+      }
+      return objectList;
+    },
+  },
+  // genero una lista con doppio filtro per mostrare i risultati
+  computed: {
+    doubleFilteredList() {
+      const firstFilter = this.filterForKey(this.albumList, 'genre', this.choosedGenre);
+      return this.filterForKey(firstFilter, 'author', this.choosedArtist);
     },
   },
   created() {
