@@ -21,6 +21,7 @@ export default {
 <style lang="scss">
 @import "~bootstrap/scss/bootstrap";
 @import "./src/assets/scss/partials/_commons.scss";
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
